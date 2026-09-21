@@ -26,7 +26,7 @@ Worker UIs:
 ## Project Structure
 
 ```text
-pyspark-docker-project/
+pyspark-docker-with-workers/
 ├── docker-compose.yml
 ├── Dockerfile
 ├── README.md
@@ -132,70 +132,6 @@ To stop the containers and remove the network:
 ```bash
 docker compose down
 ```
-
-## What to Experiment With
-
-This project is intentionally small so that you can experiment with Spark.
-
-### Partitions
-
-Try changing:
-
-```python
-.config("spark.sql.shuffle.partitions", "4")
-```
-
-to different values and observe the effect in Spark UI.
-
-You can also experiment with:
-
-```python
-repartition()
-```
-
-and:
-
-```python
-coalesce()
-```
-
-### Caching
-
-Try caching a DataFrame:
-
-```python
-transactions.cache()
-```
-
-Then run multiple operations against it and compare the execution in Spark UI.
-
-### Joins
-
-Experiment with:
-
-```python
-join()
-```
-
-and later try:
-
-```python
-broadcast()
-```
-
-for small lookup tables.
-
-### File Formats
-
-Compare CSV and Parquet.
-
-For example:
-
-```python
-df.write.parquet("/output/example")
-```
-
-Parquet is generally much more suitable for analytical workloads than CSV.
 
 ### Number of Workers
 
